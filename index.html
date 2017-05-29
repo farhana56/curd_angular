@@ -1,0 +1,203 @@
+<!Doctype html>
+<html Lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bootstrap template</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+	<div class="top-btn-area "  >
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<button class="pull-right save btn btn-info" data-toggle="modal" data-target="#modalSave">ADD NEW</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="" class="form-horizontal">
+						<div class="form-search">
+				          	<input type="search" class="form-control search" placeholder="Search" results=5 ng-model="searchBox">
+				        </div>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="body-area"  >
+		<div class="container">
+			<div class="row row-eq-height" >
+				<div class="col-xs-6 col-md-4 "  ng-repeat= "rank in ranks | filter:searchBox">
+					<div class="rank-div">
+						<h3> {{rank.title}}</h3>
+						<div>
+							<h4>Rank : <span> {{rank.rank}}</span></h4>
+							<p>ID : <span>{{rank.id}}</span></p>
+							<div class="space-30" ></div>
+							<button class ="edit btn btn-warning" data-toggle="modal" data-target="#modalEdit" ng-click="selectRank(rank)">Edit</button>
+							<button class ="delete btn btn-danger" data-toggle="modal" data-target="#modalDelete" ng-click="selectRank(rank)">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+  <!-- Modal== save -->
+	<div class="modal fade" id="modalSave" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Add new Rank</h4>
+	        </div>
+	        <div class="modal-body">
+	          <form class="form-horizontal">
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" >Title:</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control"  placeholder="Enter Movie Title" ng-model="newRank.title">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" >Rank:</label>
+				    <div class="col-sm-10"> 
+				      <input type="number" class="form-control"  placeholder="Enter Your Ranking" ng-model="newRank.rank">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" >ID:</label>
+				    <div class="col-sm-10"> 
+				      <input type="text" class="form-control"  placeholder="Enter  Movie ID" ng-model="newRank.id">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group"> 
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn-alert btn btn-default" ng-click="saveRank()" data-dismiss="modal" data-toggle="modal" data-target="#modalAlert">Save</button>
+				    </div>
+				  </div>
+				</form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	  	</div>
+	</div>
+	<!-- Modal== Edit -->
+	<div class="modal fade" id="modalEdit" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Edit this Rank</h4>
+	        </div>
+	        <div class="modal-body">
+	          <form class="form-horizontal">
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" >Title:</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control"  placeholder="Edit Movie Title" ng-model="clickedRank.title">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" >Rank:</label>
+				    <div class="col-sm-10"> 
+				      <input type="number" class="form-control"  placeholder="Edit Your Ranking" ng-model="clickedRank.rank">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-2" >ID:</label>
+				    <div class="col-sm-10"> 
+				      <input type="text" class="form-control"  placeholder="Edit  Movie ID" ng-model="clickedRank.id">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group"> 
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn-alert btn btn-default" ng-click="updateRank()" data-dismiss="modal" data-toggle="modal" data-target="#modalAlert">Save</button>
+				    </div>
+				  </div>
+				</form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	  	</div>
+	</div>
+
+	<!-- Modal== delete -->
+	<div class="modal fade" id="modalDelete" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Are you sure??</h4>
+	        </div>
+	        <div class="modal-body">
+	          <strong style="color:red">You are going to delete {{clickedRank.title}}</strong>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn-alert btn btn-default" data-dismiss="modal" ng-click="deleteRank()" data-toggle="modal" data-target="#modalAlert">Yes</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+	        </div>
+	      </div>
+	  	</div>
+	</div>
+
+	<!-- Modal== alert -->
+	<div class="modal fade" id="modalAlert" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        <div class="modal-body">
+	          <div class="alert alert-info" ng-if="message">	{{message}}	</div>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+	        </div>
+	      </div>
+	  	</div>
+	</div>
+	
+
+<script type="text/javascript">
+		$(".btn").click(function(){
+           $("body").css({"padding": "0"});
+         });
+
+		$(document).ready(function() {
+		    var contentPlacement = $('.top-btn-area').position().top + $('.top-btn-area').height();
+		    $('.body-area').css('margin-top',contentPlacement);
+
+		});
+
+
+
+
+</script>
+	
+
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+
+	
+</body>
+</html>

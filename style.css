@@ -1,0 +1,64 @@
+
+.body-area .row {
+    padding: 10px 0;
+}
+
+.top-btn-area {
+    background: #1e6b75;
+    padding: 30px 0;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 1;
+    top: 0;
+}
+button.pull-right.save.btn.btn-info {
+    border-radius: 0;
+    margin-bottom: 25px;
+    width: 160px;
+}
+.search {border-radius: 0px;border-style: none;box-shadow: none;}
+.body-area {
+    padding-top: 70px;
+}
+.rank-div{
+	border: 1px solid #d9d9d9;
+	margin-bottom: 30px;
+}
+.rank-div h3 {
+    margin: 0;
+    font-size: larger;
+    padding: 20px 10px;
+    text-align: center;
+    color: #fff;
+    background: #3c7669;
+}
+
+.rank-div div {
+    padding: 10px 10px 15px 10px;
+}
+
+.edit,.delete {
+    border-radius: 0px;
+    width: 75px;
+}
+.rank-div h4 {font-size: larger;}
+
+.rank-div p {
+    font-size: medium;
+}
+.msg-area {
+    background: rgba(0, 0, 0, 0.22);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.alert {
+    margin-bottom: 0;
+}
+
